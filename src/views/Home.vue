@@ -8,6 +8,7 @@
     </sui-container>
 
     <sui-container v-else text-align="center" class="_container">
+      <h2 is="sui-header" style="text-align: left;">Repack Games</h2>
       <sui-grid :columns="3" class="grid">
         <sui-grid-column v-for="(data, index) in doc.data.slice(1)" :key="index">
           <Games :game="data" />

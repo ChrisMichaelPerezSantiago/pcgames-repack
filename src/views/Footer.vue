@@ -9,8 +9,8 @@
       </div>
       <div class="ui inverted section divider"></div>
       <div class="ui horizontal inverted small divided link list">
-        <router-link class="item" to="#">GitHub</router-link>
-        <router-link class="item" to="#">v{{version}}</router-link>
+        <a class="item" href="https://github.com/ChrisMichaelPerezSantiago/pcgames-repack">GitHub</a>
+        <a class="item" to="#">v{{version}}</a>
       </div>
     </div>
   </footer>

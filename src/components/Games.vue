@@ -1,20 +1,21 @@
 <template>
   <sui-card class="fluid">
-    <sui-image  style="height: 20em;" :src="data.poster" />
+    <sui-image :src="data.poster">
+      <a is="sui-label" color="black" icon="game" slot="label" ribbon>Hotel</a>
+    </sui-image>
     <sui-card-content>
       <sui-card-header>{{data.title}}</sui-card-header>
       <sui-card-meta>{{data.date}}</sui-card-meta>
       <sui-card-description></sui-card-description>
     </sui-card-content>
     <sui-card-content extra>
-
       <a :href="data.torrent" download>
-      <sui-button animated="vertical">
-        <sui-button-content hidden>torrent</sui-button-content>
-        <sui-button-content visible>
-          <sui-icon name="download" />
-        </sui-button-content>
-      </sui-button>
+        <sui-button animated="vertical">
+          <sui-button-content hidden>torrent</sui-button-content>
+          <sui-button-content visible>
+            <sui-icon name="download" />
+          </sui-button-content>
+        </sui-button>
       </a>
     </sui-card-content>
   </sui-card>
