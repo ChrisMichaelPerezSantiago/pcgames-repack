@@ -1,0 +1,37 @@
+<template>
+  <sui-card class="fluid">
+    <sui-image  style="height: 20em;" :src="data.poster" />
+    <sui-card-content>
+      <sui-card-header>{{data.title}}</sui-card-header>
+      <sui-card-meta>{{data.date}}</sui-card-meta>
+      <sui-card-description></sui-card-description>
+    </sui-card-content>
+    <sui-card-content extra>
+
+      <a :href="data.torrent" download>
+      <sui-button animated="vertical">
+        <sui-button-content hidden>torrent</sui-button-content>
+        <sui-button-content visible>
+          <sui-icon name="download" />
+        </sui-button-content>
+      </sui-button>
+      </a>
+    </sui-card-content>
+  </sui-card>
+</template>
+
+<script>
+export default {
+  name: "Games",
+  props: {
+    game: Object
+  },
+  setup(props) {
+    const data = props.game;
+
+    return {
+      data
+    };
+  }
+};
+</script>
