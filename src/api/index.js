@@ -14,9 +14,13 @@ const getGames = async(page) =>{
         const title = $element.find('header.entry-header h1.entry-title a').text() || null;
         const poster = $element.find('div.entry-content p a img.alignleft').attr('src') || null;
         const date = $element.find('header.entry-header div.entry-meta span.entry-date time.entry-date').text() || null;
-        let _torrent = $element.find('div.entry-content ul li').html().match(/magnet:\?xt=urn:btih:[a-zA-Z0-9]*/g) || null
-        
-        const torrent = _torrent ?  _torrent[0] : null;
+        let _torrent = "";
+        let torrent = "";
+        const checkUrls =  $element.find('div.entry-content ul li').html();
+        if(checkUrls !== null){
+          _torrent = $element.find('div.entry-content ul li').html().match(/magnet:\?xt=urn:btih:[a-zA-Z0-9]*/g) || null
+          torrent = _torrent ?  _torrent[0] : null;
+        }
         
         resolve({
           title: title,
@@ -34,4 +38,4 @@ const getGames = async(page) =>{
 
 module.exports = {
   getGames
-}
+};
