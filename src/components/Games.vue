@@ -6,7 +6,13 @@
     <sui-card-content>
       <sui-card-header>{{data.title}}</sui-card-header>
       <sui-card-meta>{{data.date}}</sui-card-meta>
-      <sui-card-description></sui-card-description>
+      <sui-card-description>
+        {{data.genres}} <br/>
+        {{data.companies}} <br/>
+        {{data.languages}} <br/>
+        {{data.original_size}} <br/>
+        {{data.repack_size}}
+      </sui-card-description>
     </sui-card-content>
     <sui-card-content extra>
       <a :href="data.torrent" download>
