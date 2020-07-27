@@ -3,8 +3,8 @@ module.exports = {
   pluginOptions: {
     electronBuilder: {
       builderOptions: {
-        appId: "com.vue-electron-boilerplate.app",
-        productName: "vue-electron-boilerplate",
+        appId: "com.pcgames-repack.app",
+        productName: "pcgames-repack",
         win: {
           icon: "src/assets/logo.png",
           target: [
@@ -23,7 +23,7 @@ module.exports = {
           {
             provider: "github",
             owner: "ChrisMichaelPerezSantiago",
-            repo: "vue-electron-boilerplate",
+            repo: "pcgames-repack",
             releaseType: "draft",
           }
         ]
