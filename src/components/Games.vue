@@ -1,7 +1,7 @@
 <template>
   <sui-card class="fluid">
     <sui-image :src="data.poster">
-      <a is="sui-label" color="black" icon="game" slot="label" ribbon>Hotel</a>
+      <a is="sui-label" color="black" icon="game" slot="label" ribbon>PC</a>
     </sui-image>
     <sui-card-content>
       <sui-card-header>{{data.title}}</sui-card-header>
