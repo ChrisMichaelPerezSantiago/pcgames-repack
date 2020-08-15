@@ -1,27 +1,33 @@
 <template>
   <div>
-    <sui-container v-if="doc.isLoading" text-align="center" class="_container">
+    <!--<sui-container v-if="doc.isLoading" text-align="center" class="_container">
       <sui-dimmer active inverted>
         <sui-loader>Loading</sui-loader>
       </sui-dimmer>
       <br/><br/><br/>
-    </sui-container>
+    </sui-container> -->
 
-    <sui-container v-else text-align="" class="_container">
+    <sui-container text-align="" class="_container">
       <h2 is="sui-header" style="text-align: left;">Repack Games</h2>
-      <sui-grid :columns="3" class="grid">
-        <sui-grid-column v-for="(data, index) in doc.data.slice(1)" :key="index">
+      <sui-grid :columns="4" class="grid">
+        <sui-grid-column v-for="(data, index) in doc.data" :key="index">
           <Games :game="data" />
         </sui-grid-column>
-        <pagination :records="163" @paginate="pageChanged"></pagination>
+        <!--<pagination :records="163" @paginate="pageChanged"></pagination>-->
       </sui-grid>
     </sui-container>
+    
+    <!-- DOM element used as trigger -->
+    <div ref="intersectionTrigger" style="text-align: center;">
+      Loading ...
+    </div>
   </div>
 </template>
 
 <script>
-import { reactive, onMounted } from "@vue/composition-api";
+import { reactive, ref, watch} from "@vue/composition-api";
 import { useStore, useState } from "@u3u/vue-hooks";
+import { makeUseInfiniteScroll } from 'vue-use-infinite-scroll'
 import Games from "../components/Games";
 
 export default {
@@ -35,17 +41,24 @@ export default {
       ...useState(["doc"])
     });
 
-    const pageChanged = page => {
-      store.value.dispatch("GET_DATA", page);
-    };
+    const useInfiniteScroll = makeUseInfiniteScroll({});
+    const intersectionTrigger = ref(null);
+    const pageRef = useInfiniteScroll(intersectionTrigger);
 
-    onMounted(() => {
-      store.value.dispatch("GET_DATA", 1);
-    });
+    watch(
+      pageRef,
+      (page) => {
+        console.log(page);
+        store.value.dispatch("GET_DATA", page);
+      },
+        { 
+          immediate: true 
+        }
+    );
 
     return {
       ...state,
-      pageChanged
+      intersectionTrigger
     };
   }
 };

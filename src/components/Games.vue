@@ -1,6 +1,6 @@
 <template>
   <sui-card class="fluid">
-    <sui-image :src="data.poster">
+    <sui-image :src="data.poster || img">
       <a is="sui-label" color="black" icon="game" slot="label" ribbon>PC</a>
     </sui-image>
     <sui-card-content>
@@ -35,9 +35,10 @@ export default {
   },
   setup(props) {
     const data = props.game;
-
+    const img = require('../assets/img/default_img.jpg')
     return {
-      data
+      data,
+      img
     };
   }
 };
