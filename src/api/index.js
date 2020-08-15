@@ -27,11 +27,13 @@ const getGames = async (page) => {
 
 
         let _torrent = "";
+        let __torrent = "";
         let torrent = "";
         const checkUrls = $element.find('div.entry-content p').html();
         if (checkUrls !== null) {
-          _torrent = $element.find('div.entry-content ul li').html().match(/magnet:\?xt=urn:btih:[a-zA-Z0-9]*/g) || null
-          torrent = _torrent ? _torrent[0] : null;
+          _torrent = $element.find('div.entry-content ul li').html()
+         __torrent = _torrent ? _torrent.match(/magnet:\?xt=urn:btih:[a-zA-Z0-9]*/g) : null;
+          torrent = __torrent ? __torrent[0] : null;
         }
 
         resolve({
